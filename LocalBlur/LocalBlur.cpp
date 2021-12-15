@@ -8,26 +8,27 @@
 using namespace cv;
 using namespace std;
 
-Mat image;
-int x, y;
+int mouseX_, mouseY_;
+bool was_moved;
+Rect region;
+int a, b;
 
-void mouse_coordinates(int event, int mouseX, int mouseY, int, void*)
+void draw_blur(int event, int mouseX, int mouseY, int, void*)
 {
 	if (event == EVENT_MOUSEMOVE)
 	{
-		
-		cout << mouseX << ' ' << mouseY << endl;
-		x = mouseX;
-		y = mouseY;
-		//circle(image, { 200, 200 }, 50, 0, 8);
-		//circle(image, { mouseX, mouseY }, 50, 0, 8);
-		
+		mouseX_ = mouseX;
+		mouseY_ = mouseY;
+		was_moved = true;
 	}
 }
 
 int main()
 {
-	image = imread("image.jpg");
+	int* side_of_blur_rect = new(int);
+	*side_of_blur_rect = 100;
+	was_moved = false;
+	Mat image = imread("image.jpg");
 	const Mat original_img = imread("image.jpg");
 	if(image.empty())
 	{
@@ -35,21 +36,29 @@ int main()
 		cin.get();
 		return  -1;
 	}
-	//circle(image, { 200, 200 }, 50, 0, 8);
 	
 	while (true)
 	{
-		setMouseCallback("image", mouse_coordinates);
+		setMouseCallback("image", draw_blur);
+
 		imshow("image", image);
-		auto k =waitKey(20);
-		image = imread("image.jpg");
-		Rect region(x, y, 100, 100);
-		GaussianBlur(image(region), image(region), Size(0, 0), 10);
+		createTrackbar("area", "image", side_of_blur_rect, 500);
+		auto k = waitKey(6) & 0xFF;
+		original_img.copyTo(image);
+
+		*side_of_blur_rect + mouseX_ > image.cols ? a = image.cols - mouseX_ : a = *side_of_blur_rect;
+		*side_of_blur_rect + mouseY_ > image.rows ? b = image.rows - mouseY_ : b = *side_of_blur_rect;
+
+		region = { mouseX_, mouseY_, a, b };
+		if (!was_moved)
+		{
+			GaussianBlur(image(region), image(region), Size(0, 0), 10);
+		}
 		if (k == 27)
 		{
 			break;
 		}
-		
+		was_moved = false;
 	}
 	
 	return 0;
