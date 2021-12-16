@@ -146,6 +146,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="LocalBlur.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MouseMoved.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LocalBlur.h" />
+    <ClInclude Include="MouseMoved.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
