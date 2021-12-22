@@ -145,11 +145,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="LocalBlur.cpp" />
+    <ClCompile Include="AnotherClass.cpp" />
+    <ClCompile Include="LocalBlur_.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MouseMoved.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnotherClass.h" />
     <ClInclude Include="LocalBlur.h" />
     <ClInclude Include="MouseMoved.h" />
   </ItemGroup>

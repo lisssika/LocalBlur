@@ -1,8 +1,8 @@
-#include "LocalBlur.h"
+#include "AnotherClass.h"
 
 int main()
 {
-	LocalBlur blur_img("image.jpg");
+	AnotherClass blur_img("image.jpg");
 	blur_img.draw();
 	return 0;
 }

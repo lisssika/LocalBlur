@@ -3,56 +3,65 @@
 #include <opencv2/core.hpp>
 #include <opencv2/core/types.hpp>
 #include <opencv2/imgproc.hpp>
-#include "LocalBlur.h"
+#include "AnotherClass.h"
 #include "MouseMoved.h"
+#include <iostream>
+#include <stdexcept>
+
+#include "LocalBlur.h"
 
 using namespace cv;
 using namespace std;
+
+
 
 void new_mouse_coordinates(int event, int mouseX, int mouseY, int, void*a)
 {
 	if (event == EVENT_MOUSEMOVE)
 	{
 		static_cast<MouseMoved*>(a)->operator()(mouseX, mouseY, true);
+		std::cout << mouseY<<'\n';
 	}
 }
 
-void LocalBlur::get_mouse_inf()
+void AnotherClass::get_mouse_inf()
 {
 	mouseX_ = mouse_->get_x();
 	mouseY_ = mouse_->get_y();
 	was_moved = mouse_->moved();
 }
 
-LocalBlur::LocalBlur(const std::string& filename)
+
+AnotherClass::AnotherClass(const std::string& filename)
 {
-	mouse_ = new MouseMoved;
+	mouse_ = std::make_unique<MouseMoved>();
 	original_image = imread(filename);
 	if (original_image.empty())
 	{
 		throw std::runtime_error("Image Not Found!");
 	}
 	original_image.copyTo(image);
-	side_of_blur_rect = new int{ initial_side };
+	side_of_blur_rect = std::make_unique<int>(initial_side);
 }
 
-void LocalBlur::draw()
+void AnotherClass::draw()
 {
+	LocalBlur blur;
 	while (true)
 	{
-		setMouseCallback("image", new_mouse_coordinates, mouse_);
+		setMouseCallback("image", new_mouse_coordinates, mouse_.get());
 		get_mouse_inf();
+		
 		imshow("image", image);
-		createTrackbar("area", "image", side_of_blur_rect, 500);
+		createTrackbar("area", "image", side_of_blur_rect.get(), 500);
+		blur.reset_param(mouseX_, mouseY_, *side_of_blur_rect, *side_of_blur_rect);
 		auto k = waitKey(6) & 0xFF;
 		original_image.copyTo(image);
-		*side_of_blur_rect + mouseX_ > image.cols ? a = image.cols - mouseX_ : a = *side_of_blur_rect;
-		*side_of_blur_rect + mouseY_ > image.rows ? b = image.rows - mouseY_ : b = *side_of_blur_rect;
-		region = { mouseX_, mouseY_, a, b };
-		if (!mouse_->moved()&&a&&b)
+		if(!mouse_->moved())
 		{
-			GaussianBlur(image(region), image(region), Size(0, 0), 10);
+			blur.draw(image);
 		}
+		
 		if (k == 27)
 		{
 			break;
@@ -60,5 +69,3 @@ void LocalBlur::draw()
 		mouse_->reset_moved();
 	}
 }
-
-
