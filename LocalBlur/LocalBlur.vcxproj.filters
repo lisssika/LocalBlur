@@ -12,26 +12,26 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MouseMoved.cpp">
-      <Filter>MouseMoved</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="AnotherClass.cpp">
-      <Filter>Another</Filter>
-    </ClCompile>
     <ClCompile Include="LocalBlur_.cpp">
       <Filter>LocalBlur</Filter>
     </ClCompile>
+    <ClCompile Include="ImageWindow.cpp">
+      <Filter>Another</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>MouseMoved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MouseMoved.h">
-      <Filter>MouseMoved</Filter>
-    </ClInclude>
-    <ClInclude Include="AnotherClass.h">
-      <Filter>Another</Filter>
-    </ClInclude>
     <ClInclude Include="LocalBlur.h">
       <Filter>LocalBlur</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageWindow.h">
+      <Filter>Another</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>MouseMoved</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

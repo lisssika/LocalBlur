@@ -145,15 +145,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AnotherClass.cpp" />
+    <ClCompile Include="ImageWindow.cpp" />
     <ClCompile Include="LocalBlur_.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MouseMoved.cpp" />
+    <ClCompile Include="Mouse.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnotherClass.h" />
+    <ClInclude Include="ImageWindow.h" />
     <ClInclude Include="LocalBlur.h" />
-    <ClInclude Include="MouseMoved.h" />
+    <ClInclude Include="Mouse.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

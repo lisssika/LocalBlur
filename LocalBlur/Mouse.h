@@ -1,5 +1,5 @@
 #pragma once
-class MouseMoved
+class Mouse
 {
 private:
 	int x_ = 0;
