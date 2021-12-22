@@ -3,15 +3,15 @@
 #include <opencv2/core.hpp>
 #include <opencv2/core/mat.hpp>
 #include "LocalBlur.h"
+#include <memory>
 
 class ImageWindow final
 {
 public:
-	ImageWindow(const cv::Mat& image, std::string const& window_name);
+	ImageWindow(std::shared_ptr<cv::Mat>& image, std::string const& window_name);
 	void draw();
 private:
-	cv::Mat image_;
-	cv::Mat original_image_;
+	std::shared_ptr<cv::Mat> original_image_;
 	LocalBlur blur_;
 
 	std::string window_name_;
