@@ -6,7 +6,7 @@
 #include "LocalBlur.h"
 #include "TrackBar.h"
 
-ImageWindow::ImageWindow(std::shared_ptr< cv::Mat>& image, std::string const& window_name):window_name_(window_name)
+ImageWindow::ImageWindow(const std::shared_ptr<const cv::Mat>& image, std::string const& window_name):window_name_(window_name)
 {
 	if (!image.get() || image->empty())
 	{

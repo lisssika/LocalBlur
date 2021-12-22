@@ -8,10 +8,10 @@
 class ImageWindow final
 {
 public:
-	ImageWindow(std::shared_ptr<cv::Mat>& image, std::string const& window_name);
+	ImageWindow(const std::shared_ptr<const cv::Mat>& image, std::string const& window_name);
 	void draw();
 private:
-	std::shared_ptr<cv::Mat> original_image_;
+	std::shared_ptr<const cv::Mat> original_image_;
 	LocalBlur blur_;
 
 	std::string window_name_;

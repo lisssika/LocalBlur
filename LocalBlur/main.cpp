@@ -4,8 +4,8 @@
 
 int main()
 {
-	cv::Mat image = cv::imread("image.jpg");
-	std::shared_ptr<cv::Mat> img(&image);
+	const cv::Mat image = cv::imread("image.jpg");
+	const std::shared_ptr<const cv::Mat> img(&image);
 	ImageWindow blur_img(img, "window");
 	blur_img.draw();
 	return 0;
