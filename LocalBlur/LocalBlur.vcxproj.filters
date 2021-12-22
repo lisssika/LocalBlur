@@ -1,14 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="MouseMoved">
-      <UniqueIdentifier>{13dae6a7-2fb3-4d22-bb11-e10660ebbf63}</UniqueIdentifier>
-    </Filter>
     <Filter Include="LocalBlur">
       <UniqueIdentifier>{483246e8-36c6-4d18-8c79-8de2d86087f6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Another">
+    <Filter Include="TrackBar">
+      <UniqueIdentifier>{82d4a6f6-bba2-4772-8ca5-e3ff32d98c90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImageWindow">
       <UniqueIdentifier>{085915c4-1ba8-4680-a0d5-76f6c032ba72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mouse">
+      <UniqueIdentifier>{13dae6a7-2fb3-4d22-bb11-e10660ebbf63}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -17,10 +20,13 @@
       <Filter>LocalBlur</Filter>
     </ClCompile>
     <ClCompile Include="ImageWindow.cpp">
-      <Filter>Another</Filter>
+      <Filter>ImageWindow</Filter>
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
-      <Filter>MouseMoved</Filter>
+      <Filter>Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackBar.cpp">
+      <Filter>TrackBar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -28,10 +34,13 @@
       <Filter>LocalBlur</Filter>
     </ClInclude>
     <ClInclude Include="ImageWindow.h">
-      <Filter>Another</Filter>
+      <Filter>ImageWindow</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.h">
-      <Filter>MouseMoved</Filter>
+      <Filter>Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackBar.h">
+      <Filter>TrackBar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

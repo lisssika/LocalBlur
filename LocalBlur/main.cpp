@@ -4,7 +4,7 @@
 
 int main()
 {
-	cv::Mat image = cv::imread("image.jpg");
+	const cv::Mat image = cv::imread("image.jpg");
 	ImageWindow blur_img(image, "window");
 	blur_img.draw();
 	return 0;

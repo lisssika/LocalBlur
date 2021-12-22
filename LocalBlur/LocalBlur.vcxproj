@@ -149,11 +149,13 @@
     <ClCompile Include="LocalBlur_.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="TrackBar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageWindow.h" />
     <ClInclude Include="LocalBlur.h" />
     <ClInclude Include="Mouse.h" />
+    <ClInclude Include="TrackBar.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
