@@ -25,13 +25,12 @@ void ImageWindow::draw()
 	{
 		original_image_.copyTo(image_);
 		const int side_blur_region = track_bar.get();
-		blur_.reset_param(mouse.get_x(), mouse.get_y(), side_blur_region, side_blur_region);
-		;
+		LocalBlurParams blur_params (mouse.get_x(), mouse.get_y(), side_blur_region, side_blur_region);
 		key = cv::waitKey(1) & 0xFF;
 		
 		if(!mouse.moved())
 		{
-			blur_.draw(image_);
+			blur_.draw(image_, blur_params);
 		}
 		cv::imshow(window_name_, image_);
 		mouse.reset_moved();
