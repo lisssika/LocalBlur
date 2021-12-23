@@ -3,10 +3,6 @@
 #include <opencv2/core/types.hpp>
 #include <opencv2/imgproc.hpp>
 #include <stdexcept>
-void my_gauss_blur(cv::InputArray src, cv::OutputArray dst)
-{
-	cv::GaussianBlur(src, dst, cv::Size(0, 0), 10);
-}
 
 LocalBlurParams::LocalBlurParams(int x, int y, int width, int height):
 							x_(x), y_(y), width_(width), height_(height) {}
@@ -28,9 +24,10 @@ int LocalBlurParams::get_height() const
 {
 	return height_;
 }
-LocalBlur::LocalBlur(void(* const blur_func)(cv::InputArray&, cv::OutputArray&)) :blur_func_(blur_func)
+
+LocalBlur::LocalBlur(const std::shared_ptr<BlurMethod>& blur_method) :blur_method_(blur_method)
 {
-	if (blur_func == nullptr)
+	if (!blur_method)
 	{
 		throw std::runtime_error("null pointer for blur function");
 	}
@@ -61,6 +58,6 @@ void LocalBlur::draw(const cv::Mat& image, LocalBlurParams const& params) const
 	const cv::Rect region{ params.get_x(), params.get_y(), width, height };
 	if (width && height)
 	{
-		blur_func_(image(region), image(region));
+		blur_method_->operator()(image(region), image(region));
 	}
 }

@@ -17,6 +17,8 @@ ImageWindow::ImageWindow(const cv::Mat& image, std::string const& window_name):w
 
 void ImageWindow::draw()
 {
+	const std::shared_ptr<BlurMethod> blur_method = std::make_shared<GaussBlur>();
+	const LocalBlur blur(blur_method);
 	cv::imshow(window_name_, original_image_);
 	const TrackBar track_bar(window_name_, "side of blur rect", initial_side_, max_side_);
 	Mouse mouse(window_name_);
@@ -30,7 +32,7 @@ void ImageWindow::draw()
 		
 		if(!mouse.moved())
 		{
-			blur_.draw(image_, blur_params);
+			blur.draw(image_, blur_params);
 		}
 		cv::imshow(window_name_, image_);
 		mouse.reset_moved();

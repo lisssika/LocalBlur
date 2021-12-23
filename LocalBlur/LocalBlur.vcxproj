@@ -145,13 +145,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BlurMethod.cpp" />
     <ClCompile Include="ImageWindow.cpp" />
-    <ClCompile Include="LocalBlur_.cpp" />
+    <ClCompile Include="LocalBlur.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="TrackBar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlurMethod.h" />
     <ClInclude Include="ImageWindow.h" />
     <ClInclude Include="LocalBlur.h" />
     <ClInclude Include="Mouse.h" />

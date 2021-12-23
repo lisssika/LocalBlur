@@ -3,6 +3,8 @@
 #include <opencv2/core.hpp>
 #include <opencv2/core/mat.hpp>
 #include "LocalBlur.h"
+#include "BlurMethod.h"
+#include <memory>
 
 class ImageWindow final
 {
@@ -12,7 +14,8 @@ public:
 private:
 	cv::Mat image_;
 	cv::Mat original_image_;
-	LocalBlur blur_;
+	//LocalBlur blur_;
+	 
 
 	std::string window_name_;
 	int initial_side_ = 250;

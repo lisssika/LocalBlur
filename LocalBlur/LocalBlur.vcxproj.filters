@@ -13,12 +13,12 @@
     <Filter Include="Mouse">
       <UniqueIdentifier>{13dae6a7-2fb3-4d22-bb11-e10660ebbf63}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DrawBlur">
+      <UniqueIdentifier>{ed3980c9-49e4-497c-b5fc-dc2f05df919c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="LocalBlur_.cpp">
-      <Filter>LocalBlur</Filter>
-    </ClCompile>
     <ClCompile Include="ImageWindow.cpp">
       <Filter>ImageWindow</Filter>
     </ClCompile>
@@ -27,6 +27,12 @@
     </ClCompile>
     <ClCompile Include="TrackBar.cpp">
       <Filter>TrackBar</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalBlur.cpp">
+      <Filter>LocalBlur</Filter>
+    </ClCompile>
+    <ClCompile Include="BlurMethod.cpp">
+      <Filter>DrawBlur</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -41,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="TrackBar.h">
       <Filter>TrackBar</Filter>
+    </ClInclude>
+    <ClInclude Include="BlurMethod.h">
+      <Filter>DrawBlur</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
