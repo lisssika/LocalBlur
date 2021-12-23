@@ -50,14 +50,17 @@ int LocalBlur::cut_long_side(int side_longitude, int coordinate, int image_side)
 	return  side_longitude;
 }
 
-void LocalBlur::draw(const cv::Mat& image, LocalBlurParams const& params) const
+cv::Mat LocalBlur::get_blur_image(const cv::Mat& image, LocalBlurParams const& params) const
 {
+	cv::Mat blur_image;
+	image.copyTo(blur_image);
 	const std::pair<int, int>region_sides = set_width_and_height(image.cols, image.rows, params);
 	const int width = region_sides.first;
 	const int height = region_sides.second;
 	const cv::Rect region{ params.get_x(), params.get_y(), width, height };
 	if (width && height)
 	{
-		blur_method_->operator()(image(region), image(region));
+		blur_method_->operator()(image(region), blur_image(region));
 	}
+	return blur_image;
 }

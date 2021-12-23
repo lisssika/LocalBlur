@@ -18,7 +18,7 @@ class LocalBlur final
 {
 public:
 	LocalBlur(const std::shared_ptr<BlurMethod>& blur_method);
-	void draw(const cv::Mat& image, LocalBlurParams const& params) const;
+	cv::Mat get_blur_image(const cv::Mat& image, LocalBlurParams const& params) const;
 private:
 	std::shared_ptr<BlurMethod> blur_method_;
 	static std::pair<int, int> set_width_and_height(int image_width, int image_height, LocalBlurParams const& blur_params);

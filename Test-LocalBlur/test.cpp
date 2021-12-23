@@ -17,7 +17,7 @@ TEST(LocalBlur, test) {
 	cv::Mat image2;
 	image.copyTo(image2);
 	blur.reset_param(x_coordinate_, y_coordinate_, width_, height_);
-	blur.draw(image,);
+	blur.get_blur_image(image,);
 	const cv::Rect region{ x_coordinate_, y_coordinate_, width_, height_ };
 	GaussianBlur(image2(region), image2(region), cv::Size(0, 0), 10);
 	EXPECT_EQ(image, image2);
